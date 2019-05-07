@@ -210,6 +210,11 @@ export default class EditorInspector {
                 if (t.divId === this.lastTabName)
                     lastTool = t;
 
+                // Property change, notify
+                t.tool.onChange(t.tool.element, () => {
+                    this.editor.core.onObjectPropertyChange.notifyObservers({ object: this.currentObject });
+                });
+
                 // Manage undo / redo
                 t.tool.onFinishChange(t.tool.element, (property, result, object, initialValue) => {
                     UndoRedo.Push({ baseObject: t.object, property: property, to: result, from: initialValue, object: object });

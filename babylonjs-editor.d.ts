@@ -1980,6 +1980,9 @@ declare module 'babylonjs-editor/editor/core' {
                     value: any;
                     initialValue: any;
             }>;
+            onObjectPropertyChange: Observable<{
+                    object: any;
+            }>;
             onDropFiles: Observable<{
                     target: HTMLElement;
                     files: FileList;

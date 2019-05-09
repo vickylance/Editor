@@ -221,6 +221,8 @@ export default class EditorInspector {
                     Tags.AddTagsTo(t.object, 'modified');
                     this.editor.graph.updateObjectMark(t.object);
                     t.onModified && t.onModified();
+
+                    this.editor.core.onObjectPropertyChange.notifyObservers({ object: this.currentObject });
                 });
 
                 this.currentTools.push(t);
